@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Bozzkurt AI — motosiklet içerik fikirleri ve video prompt stüdyosu.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <title>Bozzkurt AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">B</div>
+    <div><div class="brand">BOZZKURT <span>AI</span></div><div class="tagline">MOTO VIDEO STUDIO</div></div>
+    <button id="installBtn" class="install hidden" type="button">Yükle</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> KENDİ HİKÂYENİ OLUŞTUR</div>
+      <h1>Fikrini seç.<br><span>Videonu tasarla.</span></h1>
+      <p>Fotoğrafını ve sahne fikrini ekle. Bozzkurt AI, video üretiminde kullanabileceğin ayrıntılı bir komut hazırlasın.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><span class="step">01</span><div><h2>Karakter fotoğrafın</h2><p>Yüzünü ve tarzını referans almak için fotoğraf seç.</p></div></div>
+      <label class="upload-box" for="photoInput" id="uploadBox">
+        <input id="photoInput" type="file" accept="image/*">
+        <img id="photoPreview" alt="Seçtiğin fotoğrafın ön izlemesi" class="hidden">
+        <div id="uploadPrompt"><div class="upload-icon">＋</div><strong>Fotoğraf seç</strong><span>JPG veya PNG · Fotoğraf cihazında işlenir</span></div>
+      </label>
+      <button id="removePhoto" class="text-button hidden" type="button">Fotoğrafı kaldır</button>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><span class="step">02</span><div><h2>Sahneni seç</h2><p>Hazır fikirlerden birini seçebilir veya kendi fikrini yazabilirsin.</p></div></div>
+      <div class="idea-grid">
+        <button class="idea active" data-idea="flight"><span>🏍️</span><strong>Boğaz üstünde uçuş</strong><small>Gerçekçi · Şaşırtıcı</small></button>
+        <button class="idea" data-idea="slowmo"><span>🎬</span><strong>Sinematik sürüş</strong><small>Film gibi · Ağır çekim</small></button>
+        <button class="idea" data-idea="comedy"><span>😂</span><strong>Komik sürpriz</strong><small>Absürt · Eğlenceli</small></button>
+        <button class="idea" data-idea="night"><span>🌃</span><strong>Gece turu</strong><small>İstanbul · Neon ışıklar</small></button>
+      </div>
+      <label class="field-label" for="customIdea">Kendi fikrin (isteğe bağlı)</label>
+      <textarea id="customIdea" rows="3" placeholder="Örn. Motorumla Galata Kulesi'nin çevresinde bilim kurgu tarzında dönüyorum..."></textarea>
+      <div class="controls">
+        <div><label class="field-label" for="style">Görüntü tarzı</label><select id="style"><option value="Gerçekçi ve sinematik">Gerçekçi ve sinematik</option><option value="Komik ve şaşırtıcı">Komik ve şaşırtıcı</option><option value="Aksiyon filmi">Aksiyon filmi</option><option value="Bilim kurgu">Bilim kurgu</option></select></div>
+        <div><label class="field-label" for="duration">Süre hedefi</label><select id="duration"><option value="5 saniye">5 saniye</option><option value="8 saniye">8 saniye</option><option value="10 saniye">10 saniye</option></select></div>
+      </div>
+      <button id="makePrompt" class="primary" type="button"><span>✦</span> Video komutumu hazırla</button>
+    </section>
+
+    <section class="panel result-panel">
+      <div class="section-head"><span class="step">03</span><div><h2>Hazır video komutu</h2><p>Oluştur, kopyala ve video üretim aracına aktar.</p></div></div>
+      <textarea id="resultPrompt" rows="7" placeholder="Hazırladığın video komutu burada görünecek..."></textarea>
+      <div class="result-actions">
+        <button id="copyPrompt" class="secondary" type="button">Komutu kopyala</button>
+        <button id="downloadPrompt" class="secondary" type="button">TXT indir</button>
+      </div>
+      <div id="status" class="status" role="status">Hazır. Önce bir fikir seç.</div>
+      <div class="notice"><strong>Video üretimi hakkında</strong><p>Bu ilk sürüm fotoğrafını seçmene ve video komutunu hazırlamana yarar. Gerçek videoyu uygulama içinde üretmek için ayrıca bir video modeli/servisi bağlamamız gerekiyor. Böylece ücret ve ücretsiz kullanım sınırlarını açıkça kontrol edebiliriz.</p></div>
+    </section>
+
+    <section class="panel mini-panel">
+      <div class="section-head"><span class="step">04</span><div><h2>Bir sonraki aşama</h2><p>Bu temel sürümden sonra gerçek video üretim bağlantısını ekleyeceğiz.</p></div></div>
+      <ul class="next-list"><li>Ücretsiz/açık kaynak video modeli seçimi</li><li>Üretim kuyruğu ve durum ekranı</li><li>Videoyu MP4 olarak kaydetme</li></ul>
+    </section>
+    <footer>BOZZKURT AI · İlk prototip · Fotoğrafın bu prototipte sunucuya gönderilmez.</footer>
+  </main>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
