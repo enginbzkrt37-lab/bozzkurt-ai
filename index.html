@@ -1,73 +1,210 @@
+
 <!doctype html>
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101114">
-  <meta name="description" content="Bozzkurt AI — motosiklet içerik fikirleri ve video prompt stüdyosu.">
+  <meta name="description" content="Bozzkurt AI - Motosiklet videoları için yapay zekâ yaratıcı stüdyosu.">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
-  <title>Bozzkurt AI</title>
   <link rel="stylesheet" href="styles.css">
+  <title>Bozzkurt AI | Moto Video Studio</title>
 </head>
 <body>
   <header class="topbar">
     <div class="brand-mark">B</div>
-    <div><div class="brand">BOZZKURT <span>AI</span></div><div class="tagline">MOTO VIDEO STUDIO</div></div>
+    <div>
+      <div class="brand">BOZZKURT <span>AI</span></div>
+      <div class="tagline">AI MOTO VIDEO STUDIO</div>
+    </div>
     <button id="installBtn" class="install hidden" type="button">Yükle</button>
   </header>
 
   <main>
     <section class="hero">
-      <div class="eyebrow"><span class="pulse"></span> KENDİ HİKÂYENİ OLUŞTUR</div>
-      <h1>Fikrini seç.<br><span>Videonu tasarla.</span></h1>
-      <p>Fotoğrafını ve sahne fikrini ekle. Bozzkurt AI, video üretiminde kullanabileceğin ayrıntılı bir komut hazırlasın.</p>
+      <div class="eyebrow">
+        <span class="pulse"></span>
+        SEN HAYAL ET, BOZZKURT AI TASARLASIN
+      </div>
+      <h1>Fikrini anlat.<br><span>AI tasarlasın.</span></h1>
+      <p>
+        Aklındaki fikri yaz. Yapay zekâ hikâyeyi geliştirsin,
+        sahneleri planlasın, kamera açılarını düşünsün ve
+        sana profesyonel bir video tasarımı hazırlasın.
+      </p>
     </section>
 
     <section class="panel">
-      <div class="section-head"><span class="step">01</span><div><h2>Karakter fotoğrafın</h2><p>Yüzünü ve tarzını referans almak için fotoğraf seç.</p></div></div>
-      <label class="upload-box" for="photoInput" id="uploadBox">
-        <input id="photoInput" type="file" accept="image/*">
-        <img id="photoPreview" alt="Seçtiğin fotoğrafın ön izlemesi" class="hidden">
-        <div id="uploadPrompt"><div class="upload-icon">＋</div><strong>Fotoğraf seç</strong><span>JPG veya PNG · Fotoğraf cihazında işlenir</span></div>
-      </label>
-      <button id="removePhoto" class="text-button hidden" type="button">Fotoğrafı kaldır</button>
+      <div class="section-head">
+        <span class="step">01</span>
+        <div>
+          <h2>Yapay zekâyı bağla</h2>
+          <p>AI özelliğini denemek için kendi API anahtarını kullan.</p>
+        </div>
+      </div>
+
+      <label class="field-label" for="aiKey">Gemini API anahtarı</label>
+      <input
+        id="aiKey"
+        type="password"
+        autocomplete="off"
+        placeholder="API anahtarını buraya gir"
+      >
+
+      <p class="help-text">
+        Anahtar GitHub koduna kaydedilmez. Bu sayfada yalnızca
+        senin tarayıcında kullanılır. Anahtarını kimseyle paylaşma.
+      </p>
+
+      <a
+        class="api-link"
+        href="https://aistudio.google.com/app/apikey"
+        target="_blank"
+        rel="noopener noreferrer"
+      >API anahtarı oluştur ↗</a>
     </section>
 
     <section class="panel">
-      <div class="section-head"><span class="step">02</span><div><h2>Sahneni seç</h2><p>Hazır fikirlerden birini seçebilir veya kendi fikrini yazabilirsin.</p></div></div>
+      <div class="section-head">
+        <span class="step">02</span>
+        <div>
+          <h2>Hayalindeki videoyu anlat</h2>
+          <p>Bir fikir seç veya kendi senaryonu yaz.</p>
+        </div>
+      </div>
+
       <div class="idea-grid">
-        <button class="idea active" data-idea="flight"><span>🏍️</span><strong>Boğaz üstünde uçuş</strong><small>Gerçekçi · Şaşırtıcı</small></button>
-        <button class="idea" data-idea="slowmo"><span>🎬</span><strong>Sinematik sürüş</strong><small>Film gibi · Ağır çekim</small></button>
-        <button class="idea" data-idea="comedy"><span>😂</span><strong>Komik sürpriz</strong><small>Absürt · Eğlenceli</small></button>
-        <button class="idea" data-idea="night"><span>🌃</span><strong>Gece turu</strong><small>İstanbul · Neon ışıklar</small></button>
+        <button class="idea active" data-idea="flight" type="button">
+          <span>🏍️</span>
+          <strong>Boğaz üzerinde uçuş</strong>
+          <small>Fantastik sinema</small>
+        </button>
+
+        <button class="idea" data-idea="slowmo" type="button">
+          <span>🎬</span>
+          <strong>Sinematik sürüş</strong>
+          <small>Film kalitesinde</small>
+        </button>
+
+        <button class="idea" data-idea="comedy" type="button">
+          <span>😂</span>
+          <strong>Komik sürpriz</strong>
+          <small>Eğlenceli içerik</small>
+        </button>
+
+        <button class="idea" data-idea="night" type="button">
+          <span>🌃</span>
+          <strong>İstanbul gecesi</strong>
+          <small>Neon ve şehir ışıkları</small>
+        </button>
       </div>
-      <label class="field-label" for="customIdea">Kendi fikrin (isteğe bağlı)</label>
-      <textarea id="customIdea" rows="3" placeholder="Örn. Motorumla Galata Kulesi'nin çevresinde bilim kurgu tarzında dönüyorum..."></textarea>
+
+      <label class="field-label" for="customIdea">Senin fikrin</label>
+      <textarea
+        id="customIdea"
+        rows="4"
+        placeholder="Örneğin: Motorumla İstanbul sokaklarında ilerlerken şehir bir anda geleceğin dünyasına dönüşüyor..."
+      ></textarea>
+
       <div class="controls">
-        <div><label class="field-label" for="style">Görüntü tarzı</label><select id="style"><option value="Gerçekçi ve sinematik">Gerçekçi ve sinematik</option><option value="Komik ve şaşırtıcı">Komik ve şaşırtıcı</option><option value="Aksiyon filmi">Aksiyon filmi</option><option value="Bilim kurgu">Bilim kurgu</option></select></div>
-        <div><label class="field-label" for="duration">Süre hedefi</label><select id="duration"><option value="5 saniye">5 saniye</option><option value="8 saniye">8 saniye</option><option value="10 saniye">10 saniye</option></select></div>
+        <div>
+          <label class="field-label" for="style">Video tarzı</label>
+          <select id="style">
+            <option value="Gerçekçi ve sinematik">Gerçekçi ve sinematik</option>
+            <option value="Aksiyon filmi">Aksiyon filmi</option>
+            <option value="Bilim kurgu">Bilim kurgu</option>
+            <option value="Komik ve şaşırtıcı">Komik ve şaşırtıcı</option>
+            <option value="Karanlık ve atmosferik">Karanlık ve atmosferik</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="field-label" for="duration">Video süresi</label>
+          <select id="duration">
+            <option value="5 saniye">5 saniye</option>
+            <option value="8 saniye">8 saniye</option>
+            <option value="10 saniye">10 saniye</option>
+          </select>
+        </div>
       </div>
-      <button id="makePrompt" class="primary" type="button"><span>✦</span> Video komutumu hazırla</button>
+
+      <label class="field-label" for="photoInput">Referans fotoğrafı (isteğe bağlı)</label>
+      <input id="photoInput" type="file" accept="image/*">
+
+      <div id="photoArea" class="photo-area hidden">
+        <img id="photoPreview" alt="Seçilen referans fotoğrafı">
+        <button id="removePhoto" class="secondary" type="button">
+          Fotoğrafı kaldır
+        </button>
+      </div>
+
+      <button id="thinkDesign" class="primary" type="button">
+        ✦ Yapay zekâ düşünsün ve tasarlasın
+      </button>
+
+      <button id="makePrompt" class="secondary fallback-button" type="button">
+        Bağlantısız taslak oluştur
+      </button>
     </section>
 
     <section class="panel result-panel">
-      <div class="section-head"><span class="step">03</span><div><h2>Hazır video komutu</h2><p>Oluştur, kopyala ve video üretim aracına aktar.</p></div></div>
-      <textarea id="resultPrompt" rows="7" placeholder="Hazırladığın video komutu burada görünecek..."></textarea>
-      <div class="result-actions">
-        <button id="copyPrompt" class="secondary" type="button">Komutu kopyala</button>
-        <button id="downloadPrompt" class="secondary" type="button">TXT indir</button>
+      <div class="section-head">
+        <span class="step">03</span>
+        <div>
+          <h2>Bozzkurt AI tasarımı</h2>
+          <p>Hikâye, sahne akışı, kamera planı, konuşma ve video komutu.</p>
+        </div>
       </div>
-      <div id="status" class="status" role="status">Hazır. Önce bir fikir seç.</div>
-      <div class="notice"><strong>Video üretimi hakkında</strong><p>Bu ilk sürüm fotoğrafını seçmene ve video komutunu hazırlamana yarar. Gerçek videoyu uygulama içinde üretmek için ayrıca bir video modeli/servisi bağlamamız gerekiyor. Böylece ücret ve ücretsiz kullanım sınırlarını açıkça kontrol edebiliriz.</p></div>
+
+      <textarea
+        id="resultPrompt"
+        rows="14"
+        placeholder="Yapay zekânın hazırladığı yaratıcı plan burada görünecek..."
+      ></textarea>
+
+      <div class="result-actions">
+        <button id="copyPrompt" class="secondary" type="button">
+          Kopyala
+        </button>
+        <button id="downloadPrompt" class="secondary" type="button">
+          TXT indir
+        </button>
+      </div>
+
+      <div id="status" class="status" role="status">
+        Hazır. Bir fikir yaz ve yapay zekâyı çalıştır.
+      </div>
+
+      <div class="notice">
+        <strong>Önemli bilgi</strong>
+        <p>
+          Bu aşamada AI fikir geliştirip video tasarımını hazırlayacak.
+          Gerçek MP4 üretimi için ayrıca video üretim motoru bağlamamız
+          gerekecek. Ücretsiz kullanım kotası sağlayıcıya göre değişebilir.
+        </p>
+      </div>
     </section>
 
     <section class="panel mini-panel">
-      <div class="section-head"><span class="step">04</span><div><h2>Bir sonraki aşama</h2><p>Bu temel sürümden sonra gerçek video üretim bağlantısını ekleyeceğiz.</p></div></div>
-      <ul class="next-list"><li>Ücretsiz/açık kaynak video modeli seçimi</li><li>Üretim kuyruğu ve durum ekranı</li><li>Videoyu MP4 olarak kaydetme</li></ul>
+      <div class="section-head">
+        <span class="step">04</span>
+        <div>
+          <h2>Sıradaki geliştirmeler</h2>
+          <p>Bozzkurt AI'yi adım adım büyüteceğiz.</p>
+        </div>
+      </div>
+
+      <ul class="next-list">
+        <li>Yapay zekâ ile özgün fikir geliştirme</li>
+        <li>Sahne sahne video tasarlama</li>
+        <li>Türkçe konuşma ve ses planlama</li>
+        <li>Gerçek video üretimi ve MP4 çıktısı</li>
+      </ul>
     </section>
-    <footer>BOZZKURT AI · İlk prototip · Fotoğrafın bu prototipte sunucuya gönderilmez.</footer>
+
+    <footer>BOZZKURT AI · MOTO VIDEO STUDIO</footer>
   </main>
+
   <div id="toast" class="toast" aria-live="polite"></div>
   <script src="app.js"></script>
 </body>
